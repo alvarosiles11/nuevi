@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Test</title>
+
+
+		<style>
+			body {
+				padding: 80px;
+				padding-top: 40px;
+
+			}
+
+			.parent {
+				display: grid;
+				grid-gap: 1rem;
+				grid-template-columns: repeat(10, minmax(80px, 1fr));
+				background-color: transparent;
+			}
+
+			.box {
+				background-color: transparent;
+				border-radius: 10px;
+				height: "80px";
+				align-items: center;
+				justify-content: center;
+				display: flex;
+
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+
+		<section class="container">
+			<div id="demo" class="parent">
+			</div>
+		</section>
+
+		<script>
+			// const url = '/data.json';
+			// fetch(url)
+			// 	.then((resp) => resp.json())
+			// 	.then(function (data) {
+			// 		console.log(data);
+			// 	});
+
+			fetch("./data.json")
+				.then(response => response.json())
+				.then(json =>
+					Object.keys(json).map(key => {
+						var obj = json[key];
+						console.log("print", key, obj.title)
+						document.getElementById("demo").innerHTML +=
+							`<div class='box'>
+                            <a href="${obj.link}"  >
+							    <img src="${obj.foto}" width='100%' alt='${obj.title}'  >
+							</a>
+						</div>`;
+					})
+
+				);
+		</script>
+	</body>
+
+</html>

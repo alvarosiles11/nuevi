@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- "url": "/u01/servisoftsFiles/yoalquilo/" -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <img id="data_image_prueba" width="150" height="150" src="http://192.168.88.254:30022/cliente/45">
+        </div>
+
+        <script>
+
+            function sendPhoto() {
+                // alert("The form was submitted");
+                let response = await fetch('http://192.168.88.254:30022/upload/cliente/45', {
+                    method: 'POST',
+                    body: new FormData(formElem)
+                });
+                const data_image = document.getElementById('data_image');
+                let result = await response.json();
+                console.log(result)
+            }
+
+
+            formElem.onsubmit = async (e) => {
+                e.preventDefault();
+                let response = await fetch('http://192.168.88.254:30022/upload/cliente/45', {
+                    method: 'POST',
+                    body: new FormData(formElem)
+                });
+                const data_image = document.getElementById('data_image');
+                let result = await response.json();
+                console.log(result)
+            };
+        </script>
+    </body>
+
+</html>

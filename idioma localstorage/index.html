@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Easy Language Selector Examples</title>
+  <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.0/solar/bootstrap.min.css"> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="js/LanguageSelector.min.js"></script>
+  <script src="locale.js"></script>
+</head>
+
+<body>
+
+
+  <div class="container" style="margin:150px auto">
+
+    <select id="langSelector" class="form-control">
+      <option>:choose</option>
+      <option value="es">:español</option>
+      <option value="en">:english</option>
+      <option value="pt">:portuguese</option>
+    </select>
+    <h2 class="my-5">:heading</h2>
+    <h3>:h2</h3>
+    <p class="my-5">:first:p</p>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var l = new LanguageSelector();
+  $(document).on("change", "#langSelector", function () {
+    var s = $(this).children("option:selected").val();
+    l.setLang(s);
+    window.location = "index.html";
+  });
+  l.parse();
+</script>
+<!-- <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function () {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> -->
+<!-- <script>
+  try {
+    fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function (response) {
+      return true;
+    }).catch(function (e) {
+      var carbonScript = document.createElement("script");
+      carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+      carbonScript.id = "_carbonads_js";
+      document.getElementById("carbon-block").appendChild(carbonScript);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+</script> -->
+
+</html>

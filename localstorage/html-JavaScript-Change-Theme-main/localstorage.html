@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+		/* Common Style */
+		/* switch color theme */
+		:root {
+			--bg-color: #E8E6DC;
+			--bg-light: #DCDACA;
+			--font-color: #3D3D3D;
+			--font-light: #202020;
+
+		}
+
+		.dark-theme {
+			--bg-color: #171923;
+			--bg-light: #232535;
+			--font-color: #c5cddb;
+			--font-light: #ffffff;
+		}
+
+		/* end switch color theme */
+		.nav-links #toggle {
+			pointer: cursor !important;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			color: var(--font-light);
+			font-family: 'Montserrat', sans-serif;
+			background-color: var(--bg-color);
+			transition: all 500ms;
+		}
+
+		p {
+			color: var(--font-color);
+		}
+
+		.container {
+			max-width: 1200px;
+			display: block;
+			margin: auto;
+			padding: 0 1rem;
+		}
+
+		.highlight {
+			color: var(--font-light);
+		}
+
+		.btn {
+			padding: 10px 30px;
+			border: 3px solid var(--font-light);
+			transition: all 250ms;
+		}
+
+		.btn:hover {
+			color: var(--bg-color);
+			background-color: var(--font-light);
+		}
+
+		/* End Common Styles */
+
+		/* Navbar */
+		nav {
+			background-color: var(--primary);
+		}
+
+		nav .container {
+			display: block;
+			padding: 2rem 1.5rem;
+			margin: 2rem auto;
+			text-align: center;
+		}
+
+		nav .nav-links .nav-item {
+			list-style: none;
+			display: inline;
+			border-radius: 0.25rem;
+			line-height: 1.5rem;
+			padding: 0.5rem 0.75rem;
+			margin: 1rem;
+			transition: all 250ms;
+			cursor: pointer;
+		}
+
+		nav .nav-links .active {
+			font-weight: 700;
+			color: var(--link-btn);
+		}
+
+		nav .nav-links .nav-item:hover {
+			background-color: var(--bg-light);
+		}
+
+		a {
+			text-decoration: none;
+			color: var(--link-btn);
+		}
+
+		/* End Navbar */
+		/* hero section */
+		.hero {
+			max-width: 650px;
+			margin: 3rem auto;
+			padding-top: 1rem;
+			padding-bottom: 3rem;
+			text-align: center;
+		}
+
+		.hero-info h2 {
+			margin: 1rem 0;
+			font-weight: 400;
+		}
+
+		.hero-tag {
+			font-size: 5rem;
+			font-weight: 600;
+			margin: 1rem 0;
+		}
+
+		.hero-abt {
+			line-height: 1.5rem;
+			margin: 3rem auto;
+			max-width: 500px;
+		}
+
+		/* end hero */
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-brand">
+					<!-- <a class="logo" href="./index.html">&#60;VA&#47;&#62;</a> -->
+				</div>
+				<div class="nav-links">
+					<a type="button" href="/" class="nav-item active">home</a>
+					<a type="button" href="/" class="nav-item">projects</a>
+					<a type="button" href="/" class="nav-item">blog</a>
+					<a type="button" class="nav-item theme" id="theme-toggle">🌚</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<section class="hero container">
+		<div class="hero-info">
+			<h2 class="hero-nm">Hi, I'm Vaishnav</h2>
+			<p class="hero-tag">Design & Code</p>
+			<p class="hero-abt">a just another guy who love working on new <span
+					class="highlight"><b>Projects</b></span>,
+				and
+				<span class="highlight"><b>UI/UX Design</b></span> + <span class="highlight"><b>Development</b></span>
+			</p>
+		</div>
+	</section>
+	<section class="hero container">
+		<div class="hero-info">
+			<h2 class="hero-nm">Hi, I'm Vaishnav</h2>
+			<p class="hero-tag">Design & Code</p>
+			<p class="hero-abt">a just another guy who love working on new <span
+					class="highlight"><b>Projects</b></span>,
+				and
+				<span class="highlight"><b>UI/UX Design</b></span> + <span class="highlight"><b>Development</b></span>
+			</p>
+		</div>
+	</section>
+
+	<script>
+		const themeToggle = document.querySelector("#theme-toggle");
+
+		const currentTheme = localStorage.getItem("theme");
+		var pageTheme = document.body;
+
+		let isDark = true
+
+		if (currentTheme == "dark") {
+			pageTheme.classList.add("dark-theme");
+			themeToggle.innerText = "🌞";
+		} else {
+			themeToggle.innerText = "🌚"
+		}
+
+		function themeMode() {
+			isDark = !isDark;
+			isDark ? themeToggle.innerText = "🌚" : themeToggle.innerText = "🌞";
+			pageTheme.classList.toggle("dark-theme");
+
+			let theme = "light";
+			if (pageTheme.classList.contains("dark-theme")) {
+				theme = "dark";
+			}
+			localStorage.setItem("theme", theme);
+		}
+
+		themeToggle.addEventListener("click", themeMode)
+	</script>
+</body>
+
+</html>

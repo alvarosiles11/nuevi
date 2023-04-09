@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test json</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style>
+            .parent {
+                display: grid;
+                grid-gap: 0.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                background-color: transparent;
+            }
+
+            .box {
+                background-color: transparent;
+                /* border-radius: 10px; */
+                /* height: "80px"; */
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
+
+        </style>
+
+        <!-- <script src="pruebaScript.js" type="module"></script> -->
+    </head>
+
+    <body>
+
+        <section class="container">
+            <div id="demo" class="parent">
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- type module permite usar el script para importar -->
+        <script type="module">
+
+            /*importo los metodos exportados*/
+            import { metodo01, metodo02, metodo03 } from './index.js';
+
+            /*declaro en una variable el array objeto json*/
+            var getObjJson = metodo01();
+
+            /*recorro el array objeto json*/
+            Object.keys(getObjJson).map(key => {
+                /*creo un div con una clase box*/
+                var obj = getObjJson[key]; document.getElementById("demo").innerHTML += `
+                <div class='box'>
+                <a href="${obj.link}">
+                    <img src="${obj.foto}" width='100%' alt='${obj.title}'>
+                </a>
+                </div>`;
+
+            });
+
+
+        </script>
+
+
+
+
+    </body>
+
+</html>

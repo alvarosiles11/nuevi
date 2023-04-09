@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>example01</title>
+  </head>
+
+  <body>
+    <div id="title"></div>
+
+    <script>
+      fetch("https://jsonplaceholder.typicode.com/todos")
+        .then((response) => response.json())
+        .then((dataLibros) => {
+          // formateo de los datos
+          const dataUsers = dataLibros.reduce((r, a) => {
+            if (!r.includes(a.userId)) {
+              r.push(a.userId);
+            }
+            return r;
+          }, []);
+
+          //recorrer los datos
+           Object.keys(dataUsers).map((key) => {
+            var userId = dataUsers[key];
+            fetch("https://jsonplaceholder.typicode.com/users/" + userId)
+              .then((response) => response.json())
+              .then((getUser) => {
+                let html = ``;
+
+                // imprimir el usuario
+                html += `<span>Usuario: ${getUser.name}</br> phone: ${getUser.phone}</br> website: ${getUser.website} <span>`;
+
+                Object.keys(dataLibros).map((key) => {
+                  var obj = dataLibros[key];
+                  if (obj.userId == userId) {
+                    html += ` <p>Usuario: "${obj.userId} Nro: ${obj.id} libro: ${obj.title}</p>`;
+                  }
+                });
+
+                // imprimir los datos del usuario
+                html += `</br>`;
+                document.getElementById("title").innerHTML += html;
+              });
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    </script>
+  </body>
+</html>

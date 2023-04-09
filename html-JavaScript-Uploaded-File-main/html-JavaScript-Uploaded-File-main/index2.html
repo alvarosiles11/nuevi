@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="file" id="file-selector" multiple>
+    <script>
+        const fileSelector = document.getElementById('file-selector');
+        fileSelector.addEventListener('change', (event) => {
+            const fileList = event.target.files;
+            console.log(fileList);
+        });
+    </script> -->
+
+    <input type="file" id="file-selector" accept=".jpg, .jpeg, .png">
+    <p id="status"> </p>
+    <div>
+        <img id="output" width="150" height="150">
+    </div>
+    <script>
+        const status = document.getElementById('status');
+        const output = document.getElementById('output');
+        if (window.FileList && window.File && window.FileReader) {
+            document.getElementById('file-selector').addEventListener('change', event => {
+                output.src = '';
+                // status.textContent = '';
+                const file = event.target.files[0];
+                // if (!file.type) {
+                //     status.textContent = 'Error: The File.type property does not appear to be supported on this browser.';
+                //     return;
+                // }
+                // if (!file.type.match('image.*')) {
+                //     status.textContent = 'Error: The selected file does not appear to be an image.'
+                //     return;
+                // }
+                const reader = new FileReader();
+                reader.addEventListener('load', event => {
+                    output.src = event.target.result;
+                });
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+
+
+
+    <!-- <img src="//whos.amung.us/swidget/e05wcga0d9.png" style="opacity: 0.0001; width: 0px; height: 0px;"> -->
+
+    <!--
+    <input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
+
+    <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+    <p><img id="output" width="200" /></p>
+
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <input type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx"> -->
+
+
+
+</body>
+
+</html>
